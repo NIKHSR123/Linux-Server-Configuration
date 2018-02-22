@@ -2,20 +2,20 @@
 
 #Udacity Project
 
-Amazon instance
+Digital Ocean Ubuntu instance
 
-IP Address: 13.127.137.78
+IP Address: 159.65.45.137
 
 SSH Port:  2200
 
-Complete URL of the hosted web application: 13.127.137.78
+Complete URL of the hosted web application: http://159.65.45.137
 
 
 #Summary of softwares installed and configuration changes made on the server:
 
-Created an AWS account and created an Ubuntu instance on lightsail.
+Created a Digial Ocean account and created an Ubuntu instance on it.
 
-Accessed the server machine with 'Connect to SSH' button which provides access to server.
+Accessed the server machine with by using SSH on Git Bash  and logged in as root.
 
 Updated all currently installed packages.
 
@@ -27,30 +27,9 @@ Checked the created user account grader using finger
 
 Gave grader the permission to sudo.
 
-Created a file named linuxkey containing SSH key pair for grader access using the ssh-keygen tool.
+Created files named id_rsa and id_rsa.pub containing SSH key pair for grader access using the ssh-keygen tool.
 
-Created the directories in grader to keep the authorized key
-
-    $ su --login grader
-    
-    $ sudo mkdir .ssh
-    
-    $ sudo touch .ssh/authorized_keys
-    
-    $ exit
-    
-    $ cat .ssh/linuxkey.pub
-    
-    $ su --login grader
-    
-    $ sudo nano .ssh/authorized_keys
-    
-    $ sudo chmod 700 .ssh
-    
-    $ sudo chmod 644 .ssh/authorized_keys
-    
-    $ exit
-    
+Used the ssh-copy-id script to copy the public key on server.
     
 Configured the time zone.
 
@@ -130,7 +109,6 @@ Restarted the server
 
 Configured the firewall to only allow incoming connections for SSH(2200), HTTP(80), NTP(123)
 
-Changed the port from 22 to 2200 in /etc/ssh/sshd_config
+Changed the port from 22 to 2200 in /etc/ssh/sshd_config and PermitRootLogin to no and PasswordAuthentication to no.
 
-Made same changes to networking tab in lightsail
 
